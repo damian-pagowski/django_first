@@ -22,5 +22,7 @@ damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py makemigrations
 damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py sqlmigrate hello 0001
 
 
+6 shell
 
+damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py shell
 
