@@ -1,39 +1,65 @@
-# Commands - generate and create app
-## generate django project
-- damian@laptop:~/Desktop/cs50/django/damian/damian$ django-admin startproject damian
-- looks like project is just a container with bunch of utility/config files
-- can hold one or many apps inside
-- 
-## geerate django app
-    damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py startapp hello
+# Sample Django app
 
-## run
+Experimenting with Django, Test automation with Python and CI.
 
-damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py runserver^C
+## Commands 
 
+Generate Django project
 
-# Database migration
+```bash
+$ django-admin startproject damian
+```
+Create an app
 
-## create migration file (schema snapshot?) & apply
-damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py makemigrations hello
+```bash
+$ python3 manage.py createapp hello
+```
+Run app in test server
+
+```bash
+$ python3 manage.py runserver
+```
+
+Database Migration
+```bash
+$ python3 manage.py makemigrations hello
 No changes detected in app 'hello'
-damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py migrate hello
+$ python3 manage.py migrate hello
 Operations to perform:
   Apply all migrations: hello
 Running migrations:
   Applying hello.0001_initial... OK
   Applying hello.0002_auto_20200511_1504... OK
+```
 
-# python shell (interactive)
+Interact Python Shell (for example to manipulate data in database)
+```bash
+$ python3 manage.py shell
+```
 
-damian@laptop:~/Desktop/cs50/django/damian$ python3 manage.py shell
+## Testing
 
-# Testing Web Applications with Django
+- Backend: Database models
+- Frontend: views
+- E2E - Selenium
 
-## The Back-End (database models)
 
-- unittest module
-- django specific
-- testing database modules (slq alchemy like orm)
+## CI
 
-## frontend (views)
+- generate requirements file
+
+```python
+$ pip3 freeze >> requirements.txt
+```
+- create travis config `.travis.yaml` Example:
+
+```python
+language: python
+python: 3.6
+install: pip install -r requirements.txt
+script: python manage.py test 
+```
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
