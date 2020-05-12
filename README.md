@@ -48,18 +48,33 @@ $ python3 manage.py shell
 
 - generate requirements file
 
-```python
+```bash
 $ pip3 freeze >> requirements.txt
+```
+Example:
+```bash
+Django
+gunicorn
 ```
 - create travis config `.travis.yaml` Example:
 
-```python
+```bash
 language: python
 python: 3.6
 install: pip install -r requirements.txt
-script: python manage.py test 
+script: python manage.py test
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: django-damian
+  run: python manage.py migrate
+  on: master
 ```
+- create `Procfile` for heroku. Example:
 
+```bash
+web: gunicorn damian.wsgi
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
